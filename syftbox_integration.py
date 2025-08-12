@@ -368,6 +368,37 @@ class SyftBoxPrivacyManager:
             logger.error(f"Error generating privacy statistics: {e}")
             return {"error": str(e)}
 
+    async def get_document_path(self, document_name: str) -> Optional[Path]:
+        """
+        Get the full path to a document file.
+        
+        Args:
+            document_name: Name of the document to locate
+            
+        Returns:
+            Path object or None if document not found
+        """
+        try:
+            # First check in the private folder
+            private_path = self.datasite_path / "private" / document_name
+            if private_path.exists() and private_path.is_file():
+                logger.info(f"Found document in private folder: {document_name}")
+                return private_path
+            
+            # Then check in the public folder
+            public_path = self.datasite_path / "public" / document_name
+            if public_path.exists() and public_path.is_file():
+                logger.info(f"Found document in public folder: {document_name}")
+                return public_path
+            
+            # Document not found
+            logger.warning(f"Document not found: {document_name}")
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error locating document {document_name}: {e}")
+            return None
+
 # Global instance for use by other components
 _privacy_manager_instance: Optional[SyftBoxPrivacyManager] = None
 
