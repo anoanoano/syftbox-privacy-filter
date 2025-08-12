@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 class OllamaConfig:
     """Configuration for Ollama API connection."""
     base_url: str = "http://localhost:11434"
-    model_name: str = "llama3.2"
+    model_name: str = "llama3.2:1b"  # Default to faster model for production
     timeout: int = 30
     max_retries: int = 3
 

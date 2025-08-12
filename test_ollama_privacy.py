@@ -19,7 +19,7 @@ async def test_ollama_privacy_engine():
     # Initialize engine
     config = OllamaConfig(
         base_url="http://localhost:11434",
-        model_name="llama3.1:8b",  # Upgraded model for better privacy analysis
+        model_name="llama3.2:1b",  # Using faster model as default
         timeout=30
     )
     

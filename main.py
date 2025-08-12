@@ -88,8 +88,20 @@ async def startup_event():
         if not privacy_manager:
             raise Exception("Failed to initialize privacy manager")
         
-        # Initialize rule matcher
-        rule_matcher = RuleMatcher(privacy_manager)
+        # Configure Ollama for enhanced privacy analysis
+        from ollama_privacy_engine import OllamaConfig
+        ollama_config = OllamaConfig(
+            base_url="http://localhost:11434",
+            model_name="llama3.2:1b",  # Using faster model for testing
+            timeout=30
+        )
+        
+        # Initialize rule matcher with Ollama support
+        rule_matcher = RuleMatcher(
+            privacy_manager=privacy_manager,
+            storage_path=default_datasite / ".privacy_budgets",
+            ollama_config=ollama_config
+        )
         await rule_matcher.initialize()
         
         logger.info("✅ SyftBox Privacy Filter service started successfully")

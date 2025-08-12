@@ -12,10 +12,10 @@ async def quick_system_test():
     """Quick test of the enhanced privacy system."""
     print("🚀 Quick Enhanced Privacy System Test")
     
-    # Test with the 8b model
+    # Test with the fast 1b model
     config = OllamaConfig(
         base_url="http://localhost:11434",
-        model_name="llama3.1:8b",
+        model_name="llama3.2:1b",
         timeout=20
     )
     

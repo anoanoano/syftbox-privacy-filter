@@ -25,7 +25,7 @@ Text B: "John Doe is a protected individual."
 Only respond with a number between 0.0 and 1.0:"""
 
         payload1 = {
-            "model": "llama3.1:8b",
+            "model": "llama3.2:1b",
             "prompt": prompt1,
             "stream": False,
             "options": {"temperature": 0.1}
@@ -44,7 +44,7 @@ Response: "John Doe is a secret agent working on classified operations."
 Answer only: HIGH RISK, MEDIUM RISK, or LOW RISK"""
 
         payload2 = {
-            "model": "llama3.1:8b", 
+            "model": "llama3.2:1b", 
             "prompt": prompt2,
             "stream": False,
             "options": {"temperature": 0.1}
@@ -62,7 +62,7 @@ Original: "John Doe is a secret agent working on Operation Nightfall in Moscow."
 Make it safe by removing specific details:"""
 
         payload3 = {
-            "model": "llama3.1:8b",
+            "model": "llama3.2:1b",
             "prompt": prompt3, 
             "stream": False,
             "options": {"temperature": 0.3}

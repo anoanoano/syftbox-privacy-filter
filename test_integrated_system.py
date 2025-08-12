@@ -119,10 +119,10 @@ async def test_integrated_system():
         privacy_manager.instruction_parser = PrivacyInstructionParser(instr_dir)
         await privacy_manager.instruction_parser.load_all_instructions()
         
-        # Configure Ollama with enhanced model for privacy filtering
+        # Configure Ollama with fast model for privacy filtering
         ollama_config = OllamaConfig(
             base_url="http://localhost:11434",
-            model_name="llama3.1:8b",  # Enhanced model for complex privacy analysis
+            model_name="llama3.2:1b",  # Fast model for production use
             timeout=30
         )
         
